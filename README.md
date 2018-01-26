@@ -1,4 +1,4 @@
-# InputProgressView
+# RatingView
 
 ![alt tag](https://i.imgur.com/hgC7q3I.png)
 
