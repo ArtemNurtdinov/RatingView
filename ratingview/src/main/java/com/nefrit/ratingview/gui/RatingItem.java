@@ -78,6 +78,9 @@ public class RatingItem extends LinearLayout {
 		tvCount.setText(String.valueOf(marksCount));
 		RatingView view = ((RatingView) getParent());
 		int maxValue = view.getMaxValue();
+		if (maxValue == 0) {
+			return;
+		}
 		int percent = (marksCount * 100) / maxValue;
 
 		progressViewLeft.setLayoutParams(new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.MATCH_PARENT, percent));
