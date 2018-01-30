@@ -52,9 +52,6 @@ scales.add(new Scale("Neutral", 7, getResources().getColor(R.color.mark_yellow))
 ratingView.setScales(scales);
 container.addView(ratingView);
 ```
-Result:
-
-![alt tag](https://i.imgur.com/3MUTorP.png)
 
 ### Class Scale
 
@@ -70,6 +67,11 @@ scales.add(new Scale("2", 2, getResources().getColor(R.color.mark_orange)));
 scales.add(new Scale("1", 3, getResources().getColor(R.color.mark_red)));
 ratingView.setScales(scales);
 ```
+
+Result:
+
+![alt tag](https://i.imgur.com/3MUTorP.png)
+
 `RatingView` transforms every `Scale` to `RatingItemView`. See below.
 
 ### RatingItemView
