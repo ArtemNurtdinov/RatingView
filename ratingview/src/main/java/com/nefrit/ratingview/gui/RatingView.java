@@ -14,7 +14,7 @@ import java.util.List;
 
 public class RatingView extends LinearLayout {
 
-	private RatingItem[] ratingItems;
+	private RatingItemView[] ratingItemViews;
 
 	private int scalesCount;
 	private boolean needStars;
@@ -34,8 +34,7 @@ public class RatingView extends LinearLayout {
 
 		if (attrs != null) {
 			TypedArray attributes = context.obtainStyledAttributes(attrs, R.styleable.RatingView);
-			scalesCount = attributes.getInteger(R.styleable.RatingView_scales, 0);
-			needStars = attributes.getBoolean(R.styleable.RatingView_stars, false);
+			needStars = attributes.getBoolean(R.styleable.RatingView_show_image, false);
 
 			attributes.recycle();
 		}
@@ -57,7 +56,7 @@ public class RatingView extends LinearLayout {
 			return;
 		}
 
-		ratingItems = new RatingItem[scalesCount];
+		ratingItemViews = new RatingItemView[scalesCount];
 
 		maxValue = scales.get(0).getCount();
 
@@ -68,14 +67,14 @@ public class RatingView extends LinearLayout {
 		}
 
 		for (int i = 0; i < scalesCount ; i++) {
-			RatingItem ratingItem = new RatingItem(getContext());
-			ratingItems[i] = ratingItem;
-			addView(ratingItem);
-			ratingItem.setScale(scales.get(i));
+			RatingItemView ratingItemView = new RatingItemView(getContext());
+			ratingItemViews[i] = ratingItemView;
+			addView(ratingItemView);
+			ratingItemView.setScale(scales.get(i));
 			if (needStars) {
-				ratingItem.showStar();
+				ratingItemView.showStar();
 			} else {
-				ratingItem.hideStar();
+				ratingItemView.hideStar();
 			}
 		}
 
@@ -87,12 +86,16 @@ public class RatingView extends LinearLayout {
 		});
 	}
 
+	public void setScales(Scale[] scales) {
+		setScales(Arrays.asList(scales));
+	}
+
 	int getMaxValue() {
 		return maxValue;
 	}
 
-	public RatingItem getRatingItem(int position) {
-		return ratingItems[position];
+	public RatingItemView getRatingItem(int position) {
+		return ratingItemViews[position];
 	}
 
 	public int getScalesCount() {
@@ -100,25 +103,25 @@ public class RatingView extends LinearLayout {
 	}
 
 	private void updateWidth() {
-		int maxWidth = ratingItems[0].getValueTextView().getWidth();
-		int maxCountWidth = ratingItems[0].getValueTextView().getWidth();
+		int maxWidth = ratingItemViews[0].getValueTextView().getWidth();
+		int maxCountWidth = ratingItemViews[0].getValueTextView().getWidth();
 
-		for (RatingItem ratingItem : ratingItems) {
-			if (ratingItem.getValueTextView().getWidth() > maxWidth) {
-				maxWidth = ratingItem.getValueTextView().getWidth();
+		for (RatingItemView ratingItemView : ratingItemViews) {
+			if (ratingItemView.getValueTextView().getWidth() > maxWidth) {
+				maxWidth = ratingItemView.getValueTextView().getWidth();
 			}
-			if (ratingItem.getCountTextView().getWidth() > maxCountWidth) {
-				maxCountWidth = ratingItem.getCountTextView().getWidth();
+			if (ratingItemView.getCountTextView().getWidth() > maxCountWidth) {
+				maxCountWidth = ratingItemView.getCountTextView().getWidth();
 			}
 		}
 
-		for (RatingItem ratingItem : ratingItems) {
-			ratingItem.getValueTextView().setWidth(maxWidth);
-			ratingItem.getCountTextView().setWidth(maxCountWidth);
+		for (RatingItemView ratingItemView : ratingItemViews) {
+			ratingItemView.getValueTextView().setWidth(maxWidth);
+			ratingItemView.getCountTextView().setWidth(maxCountWidth);
 		}
 	}
 
-	public List<RatingItem> getItems() {
-		return Arrays.asList(ratingItems);
+	public List<RatingItemView> getItems() {
+		return Arrays.asList(ratingItemViews);
 	}
 }

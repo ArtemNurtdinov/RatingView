@@ -8,7 +8,7 @@
     android:layout_marginBottom="6dp">
 
     <ImageView
-        android:id="@+id/img_star"
+        android:id="@+id/image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@mipmap/ic_star_off_small_18dp"

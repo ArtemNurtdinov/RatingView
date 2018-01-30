@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="RatingView">
-        <attr name="scales" format="integer"/>
-        <attr name="stars" format="boolean"/>
+        <attr name="show_image" format="boolean"/>
     </declare-styleable>
 </resources>

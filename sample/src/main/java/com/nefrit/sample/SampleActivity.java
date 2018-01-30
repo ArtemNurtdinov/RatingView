@@ -1,11 +1,10 @@
 package com.nefrit.sample;
 
-import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.LinearLayout;
 
-import com.nefrit.ratingview.gui.RatingItem;
+import com.nefrit.ratingview.gui.RatingItemView;
 import com.nefrit.ratingview.gui.RatingView;
 import com.nefrit.ratingview.model.Scale;
 
@@ -55,7 +54,7 @@ public class SampleActivity extends AppCompatActivity {
 		linearLayout.addView(ratingView1);
 
 		// You can get RatingItem from view to customize
-		RatingItem ratingItem = ratingView.getRatingItem(4);
-		ratingItem.setProgressColor(Color.RED);
+		RatingItemView ratingItemView = ratingView.getRatingItem(4);
+		ratingItemView.setProgressColor(getResources().getColor(R.color.mark_red));
 	}
 }

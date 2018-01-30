@@ -52,6 +52,9 @@ scales.add(new Scale("Neutral", 7, getResources().getColor(R.color.mark_yellow))
 ratingView.setScales(scales);
 container.addView(ratingView);
 ```
+Result:
+
+![alt tag](https://i.imgur.com/3MUTorP.png)
 
 ### Class Scale
 
@@ -59,18 +62,24 @@ You'll need at least one `Scale` object to make your `RatingView` works.
 
 Then set scales to your `RatingView` using method: 
 ```java
+List<Scale> scales = new ArrayList<>();
+scales.add(new Scale("5", 172, getResources().getColor(R.color.mark_green)));
+scales.add(new Scale("4", 42, getResources().getColor(R.color.mark_light_green)));
+scales.add(new Scale("3", 7, getResources().getColor(R.color.mark_yellow)));
+scales.add(new Scale("2", 2, getResources().getColor(R.color.mark_orange)));
+scales.add(new Scale("1", 3, getResources().getColor(R.color.mark_red)));
 ratingView.setScales(scales);
 ```
-`RatingView` transforms every `Scale` to `RatingItem`, which is View. See below.
+`RatingView` transforms every `Scale` to `RatingItemView`. See below.
 
-### View RatingItem
+### RatingItemView
 
-You can get `RatingItem` from your `RatingView` using: 
+You can get `RatingItemView` from your `RatingView` using: 
 ```java
-RatingItem ratingItem = ratingView.getRatingItem(position);
-ratingItem.setProgressColor(Color.RED);         // Change progress color
-ratingItem.setMarksValue("Cool");       // Change mark text
-ratingItem.setScale(scale);     // Change the whole scale (mark text, marks count and progress color)
+RatingItemView ratingItemView = ratingView.getRatingItem(position);
+ratingItemView.setProgressColor(Color.RED);         // Change progress color
+ratingItemView.setMarksValue("Cool");       // Change mark text
+ratingItemView.setScale(scale);     // Change the whole scale (mark text, marks count and progress color)
 ```
 
 Take a look at the [sample project](sample) for more information.

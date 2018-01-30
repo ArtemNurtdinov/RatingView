@@ -10,9 +10,9 @@ import android.widget.TextView;
 import com.nefrit.ratingview.R;
 import com.nefrit.ratingview.model.Scale;
 
-public class RatingItem extends LinearLayout {
+public class RatingItemView extends LinearLayout {
 
-	private ImageView imgStar;
+	private ImageView image;
 
 	private TextView tvCount;
 	private TextView tvMark;
@@ -25,7 +25,7 @@ public class RatingItem extends LinearLayout {
 	private View progressViewLeft;
 	private View progressViewRight;
 
-	RatingItem(Context context) {
+	RatingItemView(Context context) {
 		super(context);
 
 		this.progressColor = getResources().getColor(R.color.mark_green);
@@ -42,7 +42,7 @@ public class RatingItem extends LinearLayout {
 		tvCount = findViewById(R.id.tv_count);
 		progressViewLeft = findViewById(R.id.view_progress_left);
 		progressViewRight = findViewById(R.id.view_progress_right);
-		imgStar = findViewById(R.id.img_star);
+		image = findViewById(R.id.image);
 	}
 
 	public void setScale(Scale scale) {
@@ -88,11 +88,11 @@ public class RatingItem extends LinearLayout {
 	}
 
 	public void showStar() {
-		imgStar.setVisibility(View.VISIBLE);
+		image.setVisibility(View.VISIBLE);
 	}
 
 	public void hideStar() {
-		imgStar.setVisibility(View.GONE);
+		image.setVisibility(View.GONE);
 	}
 
 	public TextView getValueTextView() {
@@ -104,6 +104,14 @@ public class RatingItem extends LinearLayout {
 	}
 
 	public ImageView getImageStar() {
-		return imgStar;
+		return image;
+	}
+
+	public int getMarksCount() {
+		return marksCount;
+	}
+
+	public int getProgressColor() {
+		return progressColor;
 	}
 }
