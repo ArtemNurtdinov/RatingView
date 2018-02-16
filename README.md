@@ -13,7 +13,7 @@ Connecting
 
 Add next dependency in your project:
 
-`com.nefrit:ratingview:0.1.3`
+`com.nefrit:ratingview:1.0`
 
 For example, your gradle script will contains such dependencies: 
 ```
