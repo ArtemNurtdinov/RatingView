@@ -2,6 +2,7 @@ package com.nefrit.sample;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.LinearLayout;
 
 import com.nefrit.ratingview.gui.RatingItemView;
@@ -56,5 +57,14 @@ public class SampleActivity extends AppCompatActivity {
 		// You can get RatingItem from view to customize
 		RatingItemView ratingItemView = ratingView.getRatingItem(4);
 		ratingItemView.setProgressColor(getResources().getColor(R.color.mark_red));
+
+		ratingView1.setOnScaleClickListener(new RatingView.OnScaleClickListener() {
+			@Override
+			public void onClick(RatingItemView ratingItemView) {
+				// You can get your scale object from clicked view
+				Scale scale = ratingItemView.getScale();
+				Log.d("mylog", "clicked " +scale.getMark() +" with value: " +scale.getCount());
+			}
+		});
 	}
 }

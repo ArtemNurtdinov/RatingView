@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
+import android.view.View;
 import android.widget.LinearLayout;
 
 import com.nefrit.ratingview.R;
@@ -20,6 +21,8 @@ public class RatingView extends LinearLayout {
 	private boolean needStars;
 
 	private int maxValue;
+
+	private OnScaleClickListener scaleClickListener;
 
 	public RatingView(Context context) {
 		super(context);
@@ -43,9 +46,7 @@ public class RatingView extends LinearLayout {
 	}
 
 	private void init(Context context) {
-
 		setOrientation(LinearLayout.VERTICAL);
-
 	}
 
 	public void setScales(List<Scale> scales) {
@@ -124,4 +125,24 @@ public class RatingView extends LinearLayout {
 	public List<RatingItemView> getItems() {
 		return Arrays.asList(ratingItemViews);
 	}
+
+	public void setOnScaleClickListener(OnScaleClickListener onScaleClickListener) {
+		this.scaleClickListener = onScaleClickListener;
+		for (RatingItemView ratingItemView : ratingItemViews) {
+			ratingItemView.setOnClickListener(onClickListener);
+		}
+	}
+
+	public interface OnScaleClickListener {
+		void onClick(RatingItemView ratingItemView);
+	}
+
+	private OnClickListener onClickListener = new OnClickListener() {
+		@Override
+		public void onClick(View view) {
+			if (scaleClickListener != null) {
+				scaleClickListener.onClick((RatingItemView) view);
+			}
+		}
+	};
 }

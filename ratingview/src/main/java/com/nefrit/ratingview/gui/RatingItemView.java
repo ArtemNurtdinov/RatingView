@@ -25,6 +25,8 @@ public class RatingItemView extends LinearLayout {
 	private View progressViewLeft;
 	private View progressViewRight;
 
+	private Scale scale;
+
 	RatingItemView(Context context) {
 		super(context);
 
@@ -46,6 +48,8 @@ public class RatingItemView extends LinearLayout {
 	}
 
 	public void setScale(Scale scale) {
+
+		this.scale = scale;
 
 		this.progressColor = scale.getColor();
 		this.markValue = scale.getMark();
@@ -113,5 +117,9 @@ public class RatingItemView extends LinearLayout {
 
 	public int getProgressColor() {
 		return progressColor;
+	}
+
+	public Scale getScale() {
+		return scale;
 	}
 }

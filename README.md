@@ -52,9 +52,9 @@ compile project(':ratingview')
 Add `RatingView` to your layout:
 ```xml
  <com.nefrit.ratingview.gui.RatingView
-            android:id="@+id/view_rating"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+    android:id="@+id/view_rating"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"/>
 ```
 
 You can also add `RatingView` via constuctor: 
@@ -98,6 +98,21 @@ RatingItemView ratingItemView = ratingView.getRatingItem(position);
 ratingItemView.setProgressColor(Color.RED);         // Change progress color
 ratingItemView.setMarksValue("Cool");       // Change mark text
 ratingItemView.setScale(scale);     // Change the whole scale (mark text, marks count and progress color)
+```
+
+### OnClickListener
+
+You can set `OnScaleClickListener` for each `RatingItemView` in your `RatingView`
+
+```java
+ratingView1.setOnScaleClickListener(new RatingView.OnScaleClickListener() {
+    @Override
+    public void onClick(RatingItemView ratingItemView) {
+        // You can get your scale object from clicked view
+        Scale scale = ratingItemView.getScale();
+        Log.d("mylog", "clicked " +scale.getMark() +" with value: " +scale.getCount());
+    }
+});
 ```
 
 Take a look at the [sample project](sample) for more information.
