@@ -20,7 +20,7 @@ For example, your gradle script will contains such dependencies:
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:20.0.0'
-    compile 'com.nefrit:inputprogressview:0.1.5'
+    compile 'com.nefrit:inputprogressview:1.0'
 }
 ```
 
