@@ -5,6 +5,7 @@ import android.content.res.TypedArray;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.widget.LinearLayout;
 
 import com.nefrit.ratingview.R;
@@ -81,10 +82,11 @@ public class RatingView extends LinearLayout {
 			}
 		}
 
-		post(new Runnable() {
+		getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
 			@Override
-			public void run() {
+			public void onGlobalLayout() {
 				updateWidth();
+				getViewTreeObserver().removeOnGlobalLayoutListener(this);
 			}
 		});
 	}
