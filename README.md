@@ -13,14 +13,14 @@ Connecting
 
 Add next dependency in your project:
 
-`com.nefrit:ratingview:1.0`
+`com.nefrit:ratingview:1.0.1`
 
 For example, your gradle script will contains such dependencies: 
 ```
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:20.0.0'
-    compile 'com.nefrit:inputprogressview:1.0'
+    compile 'com.nefrit:inputprogressview:1.0.1'
 }
 ```
 
