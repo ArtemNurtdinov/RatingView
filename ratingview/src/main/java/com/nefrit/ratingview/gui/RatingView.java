@@ -10,14 +10,16 @@ import android.widget.LinearLayout;
 import com.nefrit.ratingview.R;
 import com.nefrit.ratingview.model.Scale;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class RatingView extends LinearLayout {
 
+	private List<Scale> scales;
+
 	private RatingItemView[] ratingItemViews;
 
-	private int scalesCount;
 	private boolean needStars;
 
 	private int maxValue;
@@ -26,8 +28,6 @@ public class RatingView extends LinearLayout {
 
 	public RatingView(Context context) {
 		super(context);
-
-		scalesCount = 0;
 
 		init(context);
 	}
@@ -46,18 +46,20 @@ public class RatingView extends LinearLayout {
 	}
 
 	private void init(Context context) {
+		scales = new ArrayList<>();
 		setOrientation(LinearLayout.VERTICAL);
 	}
 
 	public void setScales(List<Scale> scales) {
+		this.scales.clear();
+		this.scales.addAll(scales);
 		removeAllViews();
-		scalesCount = scales.size();
 
 		if (scales.isEmpty()) {
 			return;
 		}
 
-		ratingItemViews = new RatingItemView[scalesCount];
+		ratingItemViews = new RatingItemView[scales.size()];
 
 		maxValue = scales.get(0).getCount();
 
@@ -67,7 +69,7 @@ public class RatingView extends LinearLayout {
 			}
 		}
 
-		for (int i = 0; i < scalesCount ; i++) {
+		for (int i = 0; i < scales.size() ; i++) {
 			RatingItemView ratingItemView = new RatingItemView(getContext());
 			ratingItemViews[i] = ratingItemView;
 			addView(ratingItemView);
@@ -100,12 +102,12 @@ public class RatingView extends LinearLayout {
 	}
 
 	public int getScalesCount() {
-		return scalesCount;
+		return scales.size();
 	}
 
 	private void updateWidth() {
 		int maxWidth = ratingItemViews[0].getValueTextView().getWidth();
-		int maxCountWidth = ratingItemViews[0].getValueTextView().getWidth();
+		int maxCountWidth = ratingItemViews[0].getCountTextView().getWidth();
 
 		for (RatingItemView ratingItemView : ratingItemViews) {
 			if (ratingItemView.getValueTextView().getWidth() > maxWidth) {
