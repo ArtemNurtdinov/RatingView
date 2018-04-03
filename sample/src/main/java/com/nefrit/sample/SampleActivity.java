@@ -66,5 +66,13 @@ public class SampleActivity extends AppCompatActivity {
 				Log.d("mylog", "clicked " +scale.getMark() +" with value: " +scale.getCount());
 			}
 		});
+
+		ratingView1.setOnScaleLongClickListener(new RatingView.OnScaleLongClickListener() {
+			@Override
+			public void onClick(RatingItemView ratingItemView) {
+				Scale scale = ratingItemView.getScale();
+				Log.d("mylog", "long clicked " +scale.getMark() +" with value: " +scale.getCount());
+			}
+		});
 	}
 }

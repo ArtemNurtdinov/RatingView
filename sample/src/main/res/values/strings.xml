@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">RatingView</string>
+    <string name="app_sample">RatingView Sample</string>
 </resources>

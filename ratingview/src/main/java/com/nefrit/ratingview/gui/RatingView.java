@@ -27,10 +27,12 @@ public class RatingView extends LinearLayout {
 
 	private OnScaleClickListener scaleClickListener;
 
+	private OnScaleLongClickListener scaleLongClickListener;
+
 	public RatingView(Context context) {
 		super(context);
 
-		init(context);
+		init();
 	}
 
 	public RatingView(Context context, @Nullable AttributeSet attrs) {
@@ -43,10 +45,10 @@ public class RatingView extends LinearLayout {
 			attributes.recycle();
 		}
 
-		init(context);
+		init();
 	}
 
-	private void init(Context context) {
+	private void init() {
 		scales = new ArrayList<>();
 		setOrientation(LinearLayout.VERTICAL);
 	}
@@ -137,7 +139,18 @@ public class RatingView extends LinearLayout {
 		}
 	}
 
+	public void setOnScaleLongClickListener(OnScaleLongClickListener onScaleLongClickListener) {
+		this.scaleLongClickListener = onScaleLongClickListener;
+		for (RatingItemView ratingItemView : ratingItemViews) {
+			ratingItemView.setOnLongClickListener(onLongClickListener);
+		}
+	}
+
 	public interface OnScaleClickListener {
+		void onClick(RatingItemView ratingItemView);
+	}
+
+	public interface OnScaleLongClickListener {
 		void onClick(RatingItemView ratingItemView);
 	}
 
@@ -147,6 +160,16 @@ public class RatingView extends LinearLayout {
 			if (scaleClickListener != null) {
 				scaleClickListener.onClick((RatingItemView) view);
 			}
+		}
+	};
+
+	private OnLongClickListener onLongClickListener = new OnLongClickListener() {
+		@Override
+		public boolean onLongClick(View view) {
+			if (scaleLongClickListener != null) {
+				scaleLongClickListener.onClick((RatingItemView) view);
+			}
+			return true;
 		}
 	};
 }

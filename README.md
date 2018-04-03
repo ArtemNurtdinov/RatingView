@@ -13,14 +13,14 @@ Connecting
 
 Add next dependency in your project:
 
-`com.nefrit:ratingview:1.0.1`
+`com.nefrit:ratingview:1.0.2`
 
 For example, your gradle script will contains such dependencies: 
 ```
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:20.0.0'
-    compile 'com.nefrit:inputprogressview:1.0.1'
+    compile 'com.nefrit:inputprogressview:1.0.2'
 }
 ```
 
@@ -111,6 +111,20 @@ ratingView1.setOnScaleClickListener(new RatingView.OnScaleClickListener() {
         // You can get your scale object from clicked view
         Scale scale = ratingItemView.getScale();
         Log.d("mylog", "clicked " +scale.getMark() +" with value: " +scale.getCount());
+    }
+});
+```
+
+### OnLongClickListener
+
+The same situation as `OnClickListener`
+
+```java
+ratingView1.setOnScaleLongClickListener(new RatingView.OnScaleLongClickListener() {
+    @Override
+    public void onClick(RatingItemView ratingItemView) {
+        Scale scale = ratingItemView.getScale();
+        Log.d("mylog", "long clicked " +scale.getMark() +" with value: " +scale.getCount());
     }
 });
 ```

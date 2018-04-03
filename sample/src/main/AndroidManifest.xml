@@ -10,7 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name="com.nefrit.sample.SampleActivity">
+        <activity
+            android:name="com.nefrit.sample.SampleActivity"
+            android:label="@string/app_sample">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
